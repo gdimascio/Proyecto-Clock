@@ -3,7 +3,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.get ("/", (req, res) => {
+app.get ("/login", (req, res) => {
     res.send("ATA")
 })
 
