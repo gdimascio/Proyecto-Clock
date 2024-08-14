@@ -13,8 +13,8 @@ exports.nose = async(req,res) => {
 
     
 
-    console.log(email, password);
+    // console.log(email, password);
     
-    res.send({username: email})
+    res.send({user: email})
 // res.redirect(`/${userID}`);
 }
