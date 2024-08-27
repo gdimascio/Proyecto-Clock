@@ -1,3 +1,11 @@
 
+* aplicar CRUD en controller.js: esta recibiendo la informacion del cliente, falta envairla al servidor y devolver la base de datos correspondiente
+* unificar signup/signin: estan usando el mismo codigo linea por linea. Hay que unificar para que la unica diferencia sea la ruta a la que llevan
 
 COMMIT:
+
+
+
+
+TASKS
+* App: boton SIGNIN/SIGNUP que muestre los elementos Signin o Signup sin cambiar de ruta
