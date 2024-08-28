@@ -1,15 +1,16 @@
+import { useSelector } from "react-redux";
 
-import { useLocation } from "react-router-dom";
+
+// Cambia 'email' para que tenga formato de 'user': user@gmail.com
+function mailToUser(email){return email.split("@")[0]}
 
 const Profile = () => {
-    const location = useLocation();
-    const profile = location.state;
+    const user = useSelector((state) => state.auth.user);
 
     return (
         <div>
             <h3>Profile</h3>
-            {profile ? <h4>Hi, {profile}!</h4> : null}
-            {profile.password}
+            {user ? <h4>Hi, {mailToUser(user)}!</h4> : null}
         </div>
     )
 }

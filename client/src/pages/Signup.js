@@ -1,49 +1,36 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '../store/authSlice';
 
 export default function Signup() {
 
   const { register, handleSubmit } = useForm();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState(null);
-
-
-
-  function mailToUser(email){return email.split("@")[0]}
+  const user = useSelector((state) => state.auth.user);
+  const error = useSelector((state) => state.auth.error);
+  const dispatch = useDispatch();
 
 
   // Manejo de envio de formulario
   const onSubmit = async data => {
     try {
-      // POST al servidor con los datos del formulario
-      const response = await fetch('http://localhost:3001/signup', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-      });
+      dispatch(signup({email, password}))
 
       // Limpia los datos completados por el formulario
       setEmail('')
       setPassword('')
 
       // Error de respuesta del servidor
-      if (!response.ok) {throw new Error ("Error en la solicitud")}
+      // if (!response.ok) {throw new Error ("Error en la solicitud")}
 
       // Procesar respuesta del servidor
-      const result = await response.json();
+      // const result = await response.json();
 
-      // Cambia 'email' para que tenga formato de 'user': user@gmail.com
-      const user = mailToUser(result.perfil.email)
-
-      // Actualiza el estado de user
-      setUser(user)
-
-      console.log("Respuesta del servidor:", result);
-      } catch (error){
+      // console.log("Respuesta del servidor:", result);
+    } catch (error){
       console.error("Error al enviar los datos:", error);
       }
     };
@@ -58,12 +45,11 @@ export default function Signup() {
               <input type="password" value={password} required placeholder="Password" {...register("password", {required: true})} onChange={(e)=>setPassword(e.target.value)}/>
 
               <div>
-                {/* si el server devuelve el campo 'user' vacio, muestra el mensaje */}
-                {user === '' ? <span>Ya existe un usuario con ese Email</span> : null}
                 <button className="enviar-button button" type="submit">SIGN UP</button>
               </div>
               {/* si el server devuelve el campo 'user', redireccionar a /profile */}
-              {user ? <Navigate to='/profile' replace={true} state={user}/> : null}
+              {error ? <p>{error}</p> : null}
+              {user ? <Navigate to='/profile' replace={true}/> : null}
             </form>
           </div>
       </div>

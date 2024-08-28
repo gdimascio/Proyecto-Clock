@@ -5,7 +5,8 @@ const db = require("../firebase/firebase");
 // CARGA DE COLECCIONES
 const usersCollection = db.collection("usuarios");
 
-
+// Cambia 'email' para que tenga formato de 'user': user@gmail.com
+function mailToUser(email){return email.split("@")[0]}
 
 exports.signin = async(req,res) => {
     // ASIGNA USUARIO Y CONTRASEÑA DEL FORMULARIO
@@ -14,13 +15,15 @@ exports.signin = async(req,res) => {
     // Busca 'email' en usersCollection
     const userSnapshot = await usersCollection.where('email', '==', email).get();
 
+    const user = mailToUser(email)
+
     // server devuleve 'user' o '' si password no coincide
     if(!userSnapshot.empty){
         userSnapshot.forEach(doc => {
-            if(doc.data().pass == password) res.send({perfil: doc.data()})
-                else res.send({perfil: ''})
+            if(doc.data().pass == password) res.send({user: user})
+                else res.send({user: ''})
         })
-    } else res.send({perfil: ''})
+    } else res.send({user: ''})
 }
 
 exports.signup = async(req,res) => {
@@ -30,20 +33,9 @@ exports.signup = async(req,res) => {
     // Busca 'email' en usersCollection
     const userSnapshot = await usersCollection.where('email', '==', email).get();
 
-    // server devuleve '' si ya existe ese email
-    if(!userSnapshot.empty) res.send({perfil: ''})
-        else {
-            // Crea un nuevo perfil de usuario
-            const newEmailDocRef = {email, password,cant_proy: "0"}
-            await usersCollection.add(newEmailDocRef)
+    // Crea un nuevo perfil de usuario
+    const newEmailDocRef = {email, password,cant_proy: "0"}
+    await usersCollection.add(newEmailDocRef)
 
-            res.send({perfil: newEmailDocRef})
-
-            //
-            // HAY QUE MODIFICAR EL CLIENTE PARA QUE SE ENCARGUE DE CONVERTIR EMAIL A USER.
-            // Y HAY QUE PASARLE res.send({newEmailDocRef}) EN VEZ DE user: user
-            //
-        }
-
-    
+    res.send({email: email})
 }
