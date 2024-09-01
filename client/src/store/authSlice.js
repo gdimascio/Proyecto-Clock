@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// Recibe registro de usuarios y envia consulta a server
 export const signup = createAsyncThunk('auth/signup', async({email, password}, thunkAPI) => {
     try {
         const res = await fetch('http://localhost:3001/signup', {
@@ -10,7 +11,6 @@ export const signup = createAsyncThunk('auth/signup', async({email, password}, t
             body: JSON.stringify({email, password})
         });
 
-        // const data = await res.json();
         return await res.json();
     } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ const initialState = {
     error: null
 }
 
-// Slice de Redux para manejo de autenticacion
+// Crea slice de Redux para manejo de autenticacion
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -41,15 +41,18 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // Exitoso
             .addCase(signup.fulfilled, (state, action) => {
                 state.user = action.payload.email
                 state.isLoggedIn = true
                 state.loading = false
                 state.error = null
             })
+            // Pendiente
             .addCase(signup.pending, (state, action) => {
                 state.loading = true
             })
+            // Rechazado
             .addCase(signup.rejected, (state, action) => {
                 state.loading = false
                 state.isLoggedIn = false

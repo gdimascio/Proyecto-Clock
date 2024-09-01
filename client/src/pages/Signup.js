@@ -17,19 +17,13 @@ export default function Signup() {
   // Manejo de envio de formulario
   const onSubmit = async data => {
     try {
+      // Despacha autenticacion a authSlice
       dispatch(signup({email, password}))
 
       // Limpia los datos completados por el formulario
       setEmail('')
       setPassword('')
 
-      // Error de respuesta del servidor
-      // if (!response.ok) {throw new Error ("Error en la solicitud")}
-
-      // Procesar respuesta del servidor
-      // const result = await response.json();
-
-      // console.log("Respuesta del servidor:", result);
     } catch (error){
       console.error("Error al enviar los datos:", error);
       }
