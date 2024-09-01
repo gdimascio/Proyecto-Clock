@@ -24,7 +24,7 @@ export default function Signup() {
       setEmail('')
       setPassword('')
 
-    } catch (error){
+      } catch (error){
       console.error("Error al enviar los datos:", error);
       }
     };
@@ -32,20 +32,17 @@ export default function Signup() {
 
     return (
       <div>
-          <div className="user-div">
-            <form className="user-form" onSubmit={handleSubmit(onSubmit)}>
-              <h3>Sign Up</h3>
-              <input type="email" value={email} required placeholder="Mail" {...register("email", {required: true, pattern: /^\S+@\S+$/i})} onChange={(e)=>setEmail(e.target.value)}/>
-              <input type="password" value={password} required placeholder="Password" {...register("password", {required: true})} onChange={(e)=>setPassword(e.target.value)}/>
+        <form className="user-form" onSubmit={handleSubmit(onSubmit)}>
+          <input type="email" value={email} required placeholder="Mail" {...register("email", {required: true, pattern: /^\S+@\S+$/i})} onChange={(e)=>setEmail(e.target.value)}/>
+          <input type="password" value={password} required placeholder="Password" {...register("password", {required: true})} onChange={(e)=>setPassword(e.target.value)}/>
 
-              <div>
-                <button className="enviar-button button" type="submit">SIGN UP</button>
-              </div>
-              {/* si el server devuelve el campo 'user', redireccionar a /profile */}
-              {error ? <p>{error}</p> : null}
-              {user ? <Navigate to='/profile' replace={true}/> : null}
-            </form>
+          <div>
+            <button className="enviar-btn btn" type="submit">SIGN UP</button>
           </div>
+          {/* Mostrar mensaje de error si el correo ya existe */}
+          {error ? <p>{error}</p> : null}
+          {user ? <Navigate to='/profile' replace={true}/> : null}
+        </form>
       </div>
     );
   }

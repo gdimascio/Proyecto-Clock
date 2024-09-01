@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// Recibe registro de usuarios y envia consulta a server
+// Recibe registro de usuarios y envia consulta a server para SIGNUP
 export const signup = createAsyncThunk('auth/signup', async({email, password}, thunkAPI) => {
     try {
         const res = await fetch('http://localhost:3001/signup', {
@@ -10,8 +10,38 @@ export const signup = createAsyncThunk('auth/signup', async({email, password}, t
             },
             body: JSON.stringify({email, password})
         });
+        const data = await res.json();
 
-        return await res.json();
+        // Si el servidor devuelve un error 'EXISTENTE', rechazar la promesa
+        if (res.status === 400 && data.error === 'EXISTENTE') {
+            return thunkAPI.rejectWithValue('Ya existe una cuenta con ese usuario');
+        }
+
+        return data;
+    } catch (err) {
+        console.log(err);
+        return thunkAPI.rejectWithValue(err.message)
+    }
+})
+
+// Recibe registro de usuarios y envia consulta a server para SIGNIN
+export const signin = createAsyncThunk('authsignin', async({email, password}, thunkAPI) => {
+    try {
+        const res = await fetch('http://localhost:3001/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, password})
+        });
+        const data = await res.json();
+
+        // Si el servidor devuelve un error 'INCORRECTA', rechazar la promesa
+        if (res.status === 400 && data.error === 'INCORRECTA') {
+            return thunkAPI.rejectWithValue('Usuario o contraseña incorrecta');
+        }
+
+        return data;
     } catch (err) {
         console.log(err);
         return thunkAPI.rejectWithValue(err.message)

@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import RootLayout from './layouts/RootLayouts'
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import Error from './pages/Error'
 
@@ -15,8 +13,6 @@ const router = createBrowserRouter(
   createRoutesFromElements((
     <Route path='/' element={<RootLayout/>}>
       <Route path='/' element={<App/>}/>
-      <Route path='/signup' element={<Signup/>}/>
-      <Route path='/signin' element={<Signin/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/*' element={<Error/>}/>
     </Route>

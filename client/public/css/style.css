@@ -19,7 +19,13 @@ body{
     align-items: center;
 }
 
-.user-div{
+
+
+.top-nav{
+    display: flex;
+}
+
+.sign-div{
     display: flex;
     justify-content: center;
     background-color: #878787;
@@ -27,7 +33,31 @@ body{
     border-radius: 5px;
     padding: 25px 0;
     margin: 50px 0;
+    flex-direction: column;
 }
+.sign-btns{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.active {
+    background-color: #908FB9;
+}
+.btn{
+    border: none;
+    height: 40px;
+    min-width: 80px;
+    cursor: pointer;
+}
+.signin-btn{
+    border-radius: 8px 0 0 8px;
+}
+.signup-btn{
+    border-radius: 0 8px 8px 0;
+}
+
+
+
 .user-form{
     /* display: flex; */
     flex-direction: column;
@@ -56,12 +86,12 @@ body{
     flex-direction: column;
     align-items: center;
 }
-.enviar-button{
+.enviar-btn{
     min-width: 150px;
     min-height: 30px;
     margin: 15px 0;
     padding: 5px;
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     background-color: #908FB9;
 }

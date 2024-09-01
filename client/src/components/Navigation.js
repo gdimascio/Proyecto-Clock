@@ -6,9 +6,9 @@ export default function Navigation(){
     const loggedIn = useSelector((state) => state.auth.isLoggedIn);
     const dispath = useDispatch();
     return (
-        <nav>
+        <nav className="top-nav">
             <Link to='/'>
-                <span>TITLE</span>
+                <span>LOGO</span>
             </Link>
             { loggedIn ? 
                 <ul>
@@ -16,10 +16,7 @@ export default function Navigation(){
                     <li><Link to='/' onClick={() => dispath(logout())}>Logout</Link></li>
                 </ul>
                 :
-                <ul>
-                    <li><Link to='/signup'>Sign Up</Link></li>
-                    <li><Link to='/signin'>Sign In</Link></li>
-                </ul>
+                null
             }
         </nav>
     )
