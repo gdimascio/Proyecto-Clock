@@ -95,3 +95,87 @@ body{
     border: none;
     background-color: #908FB9;
 }
+
+
+
+.clock {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 5px solid #908FB9;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .center {
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #262626;
+        border-radius: 100%;
+    }
+    .hour {
+        width: 3px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        animation: time 15s infinite linear;
+        &:before {
+            position: absolute;
+            content: "";
+            background: #262626;
+            height: 50px;
+            width: 3px;
+        }
+    }
+    .minute {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        animation: time 7s infinite linear;
+        &:before {
+        position: absolute;
+        content: "";
+        background: #262626;
+        height: 40px;
+        width: 1px;
+        top: 50px;
+        }
+    }
+    .second {
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        animation: time 3s infinite linear;
+        &:before {
+        position: absolute;
+        content: "";
+        background: #fd1111;
+        height: 45px;
+        width: 2px;
+        top: 45px;
+        }
+    }
+}
+@keyframes time {
+    to {
+        transform: rotate(360deg);
+    }
+}

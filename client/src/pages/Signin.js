@@ -15,7 +15,7 @@ export default function Signin() {
 
   
     // Manejo de envio de formulario
-    const onSubmit = async data => {
+    const onSubmit = () => {
       try {
         // Despacha autenticacion a authSlice
         dispatch(signin({email, password}))
@@ -37,7 +37,7 @@ export default function Signin() {
             <input type="password" value={password} required placeholder="Password" {...register("password", {required: true})} onChange={(e)=>setPassword(e.target.value)}/>
 
             <div>
-              <button className="enviar-btn btn" type="submit">SIGN IN</button>
+              <button className="enviar-btn btn" type="submit">SUBMIT</button>
             </div>
             {/* Mostrar mensaje de error si no existe usuario con ese correo */}
             {error ? <p>{error}</p> : null}

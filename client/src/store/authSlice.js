@@ -25,7 +25,7 @@ export const signup = createAsyncThunk('auth/signup', async({email, password}, t
 })
 
 // Recibe registro de usuarios y envia consulta a server para SIGNIN
-export const signin = createAsyncThunk('authsignin', async({email, password}, thunkAPI) => {
+export const signin = createAsyncThunk('auth/signin', async({email, password}, thunkAPI) => {
     try {
         const res = await fetch('http://localhost:3001/signin', {
             method: 'POST',
@@ -71,7 +71,7 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // Exitoso
+            // Exitoso - signup
             .addCase(signup.fulfilled, (state, action) => {
                 state.user = action.payload.email
                 state.isLoggedIn = true
@@ -88,6 +88,23 @@ export const authSlice = createSlice({
                 state.isLoggedIn = false
                 state.error = action.payload
             })
+            // Exitoso - signin
+            .addCase(signin.fulfilled, (state, action) => {
+                state.user = action.payload.email;
+                state.isLoggedIn = true;
+                state.loading = false;
+                state.error = null;
+            })
+            // Pendiente
+            .addCase(signin.pending, (state) => {
+                state.loading = true;
+            })
+            // Rechazado
+            .addCase(signin.rejected, (state, action) => {
+                state.loading = false;
+                state.isLoggedIn = false;
+                state.error = action.payload;
+            });
     }
 })
 

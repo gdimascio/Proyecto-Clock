@@ -37,7 +37,7 @@ export default function Signup() {
           <input type="password" value={password} required placeholder="Password" {...register("password", {required: true})} onChange={(e)=>setPassword(e.target.value)}/>
 
           <div>
-            <button className="enviar-btn btn" type="submit">SIGN UP</button>
+            <button className="enviar-btn btn" type="submit">SUBMIT</button>
           </div>
           {/* Mostrar mensaje de error si el correo ya existe */}
           {error ? <p>{error}</p> : null}
