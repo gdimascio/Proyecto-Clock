@@ -3,8 +3,11 @@
 const Profile = () => {
 
     return (
-        <div>
-            <h3>Profile</h3>
+        <div className="react-div">
+            <h3>My Profile</h3>
+
+            aca deberian ir las configuraciones de usuario como el cambio de contraseña
+
         </div>
     )
 }

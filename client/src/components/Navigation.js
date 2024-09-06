@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/authSlice";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/fontawesome-free-regular"
+
+const userImg = <FontAwesomeIcon icon={faUser} />
+const logo = "img/logo.png"
+
 
 export default function Navigation(){
     const loggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -8,28 +15,41 @@ export default function Navigation(){
 
     const dispath = useDispatch();
 
+    // States for the display of the user options
+    const [showUserMenu, setshowUserMenu] = useState(false)
+    const handleUserMenu = () => {setshowUserMenu(prevState => !prevState)}
+
     function mailToUser(email){return email.split("@")[0]}
 
 
     return (
         <nav className="top-nav">
             <Link to='/'>
-                <span>LOGO</span>
+                <img className="logo" src={logo} alt="LOGO"/>
             </Link>
+
             { loggedIn ? 
                 <div className="profile">
-                    <ul>
-                        <li><Link to='/profile'>Profile</Link></li>
-                        <li><Link to='/' onClick={() => dispath(logout())}>Logout</Link></li>
-                    </ul>
-
+                    <span className="userImg" onClick={handleUserMenu}>{userImg}</span>
                     {user ? <h4>Hi, {mailToUser(user)}!</h4> : null}
 
-
+                    { showUserMenu ? 
+                        <div className="user-menu">
+                            <ul>
+                                <li><Link to='/profile'>Profile</Link></li>
+                                <li><Link to='/' onClick={() => dispath(logout())}>Logout</Link></li>
+                            </ul>
+                        </div>
+                    : null }
                 </div>
-                :
-                null
-            }
+            : null }
+
+
+
+
+
+
+
         </nav>
     )
 }

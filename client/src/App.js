@@ -11,8 +11,7 @@
     const loading = useSelector((state) => state.auth.loading);
 
     return (
-      <div>
-
+      <div className='react-div'>
         <div className='sign-div'>
           <div className='sign-btns'>
             <button onClick={() => setShowSignin(true)} className={`btn signin-btn ${showSignin ? 'active' : ''}`}>Sign In</button>

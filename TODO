@@ -7,8 +7,9 @@ COMMIT:
 
 
 TASKS
-* Modificar LoadingClock
 * Desarrollar Perfil de usuario en el Nav superior
+    |-> My Profile
+    |-> Logout
 * Desarrollar pagina ppl en Profile.js, con <nav> vertical (Profile/Clocker/Trackers, Projects, Calendar?)
     |-> Trackers: muestra los proyectos, las sesiones de trabajo anteriores y activa el temporizador de una nueva sesion
         |-> en la parte superior: barra de NEW PROJECT (ProjName, >Start) (carga manual?)
