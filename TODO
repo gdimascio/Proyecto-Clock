@@ -1,8 +1,27 @@
+NOTES:
+* Hay que darle acceso a AUTH a mas informacion del profile. Necesita acceso al IDuser, User, IDprojects(quizas sea buena idea pasarle todos los proyectos asi puede mostrarlos rapidamente)
 
-* aplicar CRUD en controller.js: esta recibiendo la informacion del cliente, falta envairla al servidor y devolver la base de datos correspondiente
-* unificar signup/signin: estan usando el mismo codigo linea por linea. Hay que unificar para que la unica diferencia sea la ruta a la que llevan
 
 COMMIT:
 
 
 TASKS
+* Modificar LoadingClock
+* Desarrollar Perfil de usuario en el Nav superior
+* Desarrollar pagina ppl en Profile.js, con <nav> vertical (Profile/Clocker/Trackers, Projects, Calendar?)
+    |-> Trackers: muestra los proyectos, las sesiones de trabajo anteriores y activa el temporizador de una nueva sesion
+        |-> en la parte superior: barra de NEW PROJECT (ProjName, >Start) (carga manual?)
+        |-> tabla de proyectos: muestra todos los proyectos activos (ProjName, PrevSessions, >Start)
+            |-> PrevSessions: muestra las sesiones anteriores de este proyecto
+    |-> Projects: muestra todos los proyectos en detalle (Notes, Tasks, Status?, Settings(Name, Client, Color, HourRate, DeliveryDate))
+        |-> Notes: textarea + submit para enviar a DB
+        |-> Tasks: checklist de tasks tachables
+        |-> Status: % de terminacion del proyecto. Si esta cargado el HourRate, mostrar total
+        |-> Settings: muestra distintas configuraciones del proyecto
+            |-> Name: nombre del proyecto
+            |-> Client: cliente seleccionado de un array clientes[]
+            |-> Color: color representativo del proyecto
+            |-> HourRate: valor monetario (U$D) de la hora trabajada
+            |-> DeliveryDate: fecha de entrega
+    |-> Calendar: muestra el calendario con el progreso semanal y muestra la fecha de entrega de cada proyecto
+        |->

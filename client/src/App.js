@@ -17,8 +17,8 @@
           <div className='sign-btns'>
             <button onClick={() => setShowSignin(true)} className={`btn signin-btn ${showSignin ? 'active' : ''}`}>Sign In</button>
             <button onClick={() => setShowSignin(false)} className={`btn signup-btn ${!showSignin ? 'active' : ''}`}>Sign Up</button>
-
           </div>
+
           { loading ? <LoadingClock/> : null}
           {showSignin ? <Signin/> : <Signup/>}
 

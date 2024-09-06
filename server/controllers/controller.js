@@ -18,7 +18,7 @@ exports.signin = async(req,res) => {
         // Si NO existe un usuario con ese correo, devolver un mensaje de error
         return res.status(400).send({ error: 'INCORRECTA' });
     }
-    
+
     // Devuelve el perfil de usuario
     userSnapshot.forEach(doc => {
         if(doc.data().pass == password) res.send({email: email})
