@@ -97,7 +97,26 @@ body{
 }
 
 
+.loadingClock{
+    position: absolute;
+    background-color: #908fb980;
+    height: 150px;
+    width: 250px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 20px;
+    padding: 10px;
 
+    > span{
+        font-size: 24px;
+        font-weight: 500;
+        position: absolute;
+        top: 50px;
+        left: 120px;
+        margin: auto;
+    }
+}
 .clock {
     position: absolute;
     height: 100px;
@@ -106,9 +125,9 @@ body{
     box-sizing: border-box;
     border-radius: 100%;
     border: 5px solid #908FB9;
-    top: 200px;
-    left: 0;
-    right: 0;
+    top: 25px;
+    /* left: 0;
+    right: 0; */
     margin: auto;
 
     .center {

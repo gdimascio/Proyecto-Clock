@@ -8,6 +8,8 @@ export default function Navigation(){
 
     const dispath = useDispatch();
 
+    function mailToUser(email){return email.split("@")[0]}
+
 
     return (
         <nav className="top-nav">
