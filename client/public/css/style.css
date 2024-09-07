@@ -19,6 +19,11 @@ body{
     align-items: center;
 }
 
+:root{
+    --topNavHeight: 85px;
+}
+
+
 
 .react-div{
     display: flex;
@@ -30,6 +35,13 @@ body{
     align-items: center;
     justify-content: space-between;
     width: 100vw;
+    height: var(--topNavHeight);
+    padding-top: 10px;
+    background-color: #878787;
+}
+.nav-logo{
+    width: 100px;
+    text-align: center;
 }
 .logo{
     max-height: 70px;
@@ -49,6 +61,22 @@ body{
     position: absolute;
     top: 100%;
 }
+
+.side-nav{
+    position: absolute;
+    left: 0;
+    top: var(--topNavHeight);
+    height: calc(100vh - var(--topNavHeight));
+    width: 100px;
+    background-color: #878787;
+
+}
+.side-nav-active{
+    background-color: #666666;
+}
+
+
+
 
 .sign-div{
     display: flex;
@@ -222,4 +250,9 @@ body{
     to {
         transform: rotate(360deg);
     }
+}
+
+
+.home{
+    margin-left: 100px;
 }

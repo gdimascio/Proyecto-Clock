@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/fontawesome-free-regular"
 
-const userImg = <FontAwesomeIcon icon={faUser} />
+const userImg = <FontAwesomeIcon icon={faUser}/>
 const logo = "img/logo.png"
 
 
@@ -24,9 +24,12 @@ export default function Navigation(){
 
     return (
         <nav className="top-nav">
-            <Link to='/'>
-                <img className="logo" src={logo} alt="LOGO"/>
-            </Link>
+            <div className="nav-logo">
+                <Link to='/'>
+                    <img className="logo" src={logo} alt="LOGO"/>
+                </Link>
+
+            </div>
 
             { loggedIn ? 
                 <div className="profile">
@@ -43,13 +46,6 @@ export default function Navigation(){
                     : null }
                 </div>
             : null }
-
-
-
-
-
-
-
         </nav>
     )
 }

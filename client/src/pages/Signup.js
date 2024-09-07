@@ -41,7 +41,7 @@ export default function Signup() {
           </div>
           {/* Mostrar mensaje de error si el correo ya existe */}
           {error ? <p>{error}</p> : null}
-          {user ? <Navigate to='/profile' replace={true}/> : null}
+          {user ? <Navigate to='/clocks' replace={true}/> : null}
         </form>
       </div>
     );
