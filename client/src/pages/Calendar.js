@@ -1,8 +1,8 @@
 
-export default function clocks (){
+export default function Calendar (){
     return(
         <div className="logged">
-            clocks
+            calendar
         </div>
     )
 }

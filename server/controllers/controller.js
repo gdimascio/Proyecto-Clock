@@ -4,6 +4,7 @@ const db = require("../firebase/firebase");
 
 // CARGA DE COLECCIONES
 const usersCollection = db.collection("usuarios");
+const projectsCollection = db.collection("usuarios").doc;
 
 
 exports.signin = async(req,res) => {
@@ -15,15 +16,33 @@ exports.signin = async(req,res) => {
 
     // Usuario NO existente
     if (userSnapshot.empty) {
-        // Si NO existe un usuario con ese correo, devolver un mensaje de error
         return res.status(400).send({ error: 'INCORRECTA' });
     }
 
+    let projects = []
+
     // Devuelve el perfil de usuario
-    userSnapshot.forEach(doc => {
-        if(doc.data().pass == password) res.send({email: email})
-            else res.status(400).send({ error: 'INCORRECTA' });
-    })
+    for (const doc of userSnapshot.docs) {
+        // Comprueba 'password' en usuario
+        if(doc.data().pass != password) {
+            res.status(400).send({ error: 'INCORRECTA' })
+        } else {
+            // Busca los proyectos en usuario si cant_proy > 0
+            if (doc.data().cant_proy != 0){
+                const projectsSnapshot = await usersCollection.doc(doc.id).collection("proyectos").get();
+                if (!projectsSnapshot.empty) {
+                    projects = projectsSnapshot.docs.map(docProj => ({
+                        id: docProj.id,
+                        ...docProj.data()
+                    }))
+                }
+            }
+
+            res.send({email: email, projects: projects})
+        }
+
+
+    }
 }
 
 

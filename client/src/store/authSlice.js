@@ -51,6 +51,8 @@ export const signin = createAsyncThunk('auth/signin', async({email, password}, t
 // Inicializacion de autenticacion
 const initialState = {
     user: '',
+    idUser: '',
+    projects: [],
     isLoggedIn: false,
     loading: false,
     error: null
@@ -64,6 +66,8 @@ export const authSlice = createSlice({
         // Reducer para cerrar sesión
         logout: (state, action) => {
             state.user = ''
+            state.idUser = ''
+            state.projects = null
             state.isLoggedIn = false
             state.loading = false
             state.error = null
@@ -74,6 +78,8 @@ export const authSlice = createSlice({
             // Exitoso - signup
             .addCase(signup.fulfilled, (state, action) => {
                 state.user = action.payload.email
+                state.idUser = action.payload.id
+                state.projects = action.payload.projects
                 state.isLoggedIn = true
                 state.loading = false
                 state.error = null
@@ -91,6 +97,8 @@ export const authSlice = createSlice({
             // Exitoso - signin
             .addCase(signin.fulfilled, (state, action) => {
                 state.user = action.payload.email;
+                state.idUser = action.payload.id;
+                state.projects = action.payload.projects;
                 state.isLoggedIn = true;
                 state.loading = false;
                 state.error = null;

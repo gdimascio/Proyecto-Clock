@@ -1,8 +1,8 @@
 
-export default function clocks (){
+export default function profile (){
     return(
         <div className="logged">
-            clocks
+            My Profile
         </div>
     )
 }

@@ -20,12 +20,12 @@ export default function SideNavigation(){
                     <div>
                         <ul>
                             {navItems.map((item, active) => (
-                                <li
-                                    key={active}
-                                    className={showActive === active ? 'side-nav-active' : ''}
-                                    onClick={() => handleActive(active)}
-                                >
-                                    <Link to={`/${item}`} onClick={handleActive}>{item}</Link>
+                                <li className={showActive === active ? 'side-nav-active' : ''}>
+                                    <Link to={`/${item}`} 
+                                        key={active}
+                                        
+                                        onClick={() => handleActive(active)}
+                                    >{item}</Link>
                                 </li>
                             ))}
                         </ul>

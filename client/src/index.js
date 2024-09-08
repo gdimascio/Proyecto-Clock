@@ -6,17 +6,22 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import RootLayout from './layouts/RootLayouts'
-import Profile from './pages/Home'
-import Clocks from './pages/clocks';
+import Home from './pages/Home'
+import Profile from './pages/Profile'
+import Clocks from './pages/Clocks';
+import Calendar from './pages/Calendar';
+import Projects from './pages/Projects';
 import Error from './pages/Error'
 
 const router = createBrowserRouter(
   createRoutesFromElements((
     <Route path='/' element={<RootLayout/>}>
       <Route path='/' element={<App/>}/>
-      <Route path='/home' element={<Profile/>}/>
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/profile' element={<Profile/>}/>
       <Route path='/clocks' element={<Clocks/>}/>
-      <Route path='/home' element={<Profile/>}/>
+      <Route path='/projects' element={<Projects/>}/>
+      <Route path='/calendar' element={<Calendar/>}/>
 
 
       <Route path='/*' element={<Error/>}/>
