@@ -70,12 +70,13 @@ body{
     height: calc(100vh - var(--topNavHeight));
     width: 100px;
     background-color: #878787;
-
 }
 .side-nav-active{
     background-color: #666666;
 }
-
+.navItems{
+    text-transform: uppercase;
+}
 
 
 

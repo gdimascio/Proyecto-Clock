@@ -10,7 +10,7 @@ export default function SideNavigation(){
     const handleActive = (active) => {
         setShowActive(active);
     };
-    const navItems = ['CLOCKS', 'PROJECTS', 'CALENDAR'];
+    const navItems = ['clocks', 'projects', 'calendar'];
 
 
     return(
@@ -20,9 +20,9 @@ export default function SideNavigation(){
                     <div>
                         <ul>
                             {navItems.map((item, active) => (
-                                <li className={showActive === active ? 'side-nav-active' : ''}>
+                                <li key={active} className={showActive === active ? 'side-nav-active' : ''}>
                                     <Link to={`/${item}`} 
-                                        key={active}
+                                        className="navItems"
                                         
                                         onClick={() => handleActive(active)}
                                     >{item}</Link>
