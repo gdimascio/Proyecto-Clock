@@ -1,0 +1,16 @@
+usuarios (ID)
+    |- cant_proy (int)
+    |- email (string)
+    |- pass (string)
+    |- proyectos (ID)
+        |- nombre_proy (string)
+        |- notas (string)
+        |- valor_hora (int)
+        |- cliente (string)
+        |- tareas[]
+            |- (string)
+        |- fecha_entrega (timestamp)
+        |- tiempo_trabajo[] 
+            |- fecha_trabajo (timestamp)
+            |- hora_inicio (timestamp)
+            |- hora_fin (timestamp)
