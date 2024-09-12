@@ -41,7 +41,7 @@ export default function Signin() {
             </div>
             {/* Mostrar mensaje de error si no existe usuario con ese correo */}
             {error ? <p>{error}</p> : null}
-            {user ? <Navigate to='/home' replace={true}/> : null}
+            {user ? <Navigate to='/clocks' replace={true}/> : null}
           </form>
         </div>
       );
