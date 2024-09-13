@@ -9,7 +9,7 @@ export default function Projects (){
     })
 
     return(
-        <div className="logged">
+        <div>
             {projDisp}
         </div>
     )

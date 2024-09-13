@@ -5,10 +5,12 @@ import SideNavigation from '../components/SideNavigation'
 
 export default function RootLayout() {
     return (
-        <div>
+        <>
             <Navigation/>
-            <SideNavigation/>
-            <Outlet/>
-        </div>
+            <div className="main-screen">
+                <SideNavigation/>
+                <Outlet/>
+            </div>
+        </>
     )
 }

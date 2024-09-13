@@ -1,7 +1,7 @@
 
 export default function profile (){
     return(
-        <div className="logged">
+        <div>
             My Profile
         </div>
     )

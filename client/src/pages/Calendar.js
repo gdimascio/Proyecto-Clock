@@ -1,7 +1,7 @@
 
 export default function Calendar (){
     return(
-        <div className="logged">
+        <div>
             calendar
         </div>
     )

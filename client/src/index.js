@@ -6,7 +6,6 @@ import { Provider, useSelector } from 'react-redux';
 import './index.css';
 import App from './App';
 import RootLayout from './layouts/RootLayouts'
-// import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Clocks from './pages/Clocks'
 import Calendar from './pages/Calendar';
