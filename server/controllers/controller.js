@@ -27,6 +27,7 @@ exports.signin = async(req,res) => {
         if(doc.data().pass != password) {
             res.status(400).send({ error: 'INCORRECTA' })
         } else {
+            id = doc.id
             // Busca los proyectos en usuario si cant_proy > 0
             if (doc.data().cant_proy != 0){
                 const projectsSnapshot = await usersCollection.doc(doc.id).collection("proyectos").get();
@@ -38,7 +39,7 @@ exports.signin = async(req,res) => {
                 }
             }
 
-            res.send({email: email, projects: projects})
+            res.send({email: email, id: id, projects: projects})
         }
 
 
@@ -63,5 +64,5 @@ exports.signup = async(req,res) => {
     // Crea un nuevo perfil de usuario
     const newEmailDocRef = {email, password,cant_proy: "0"}
     await usersCollection.add(newEmailDocRef)
-    res.send({email: email})
+    res.send({email: email, id: id})
 }
