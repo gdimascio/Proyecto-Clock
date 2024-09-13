@@ -18,6 +18,7 @@ export default function Navigation(){
     // States for the display of the user options
     const [showUserMenu, setshowUserMenu] = useState(false)
     const handleUserMenu = () => {setshowUserMenu(prevState => !prevState)}
+    const handleLogout = () => {setshowUserMenu(false); dispath(logout())}
 
     function mailToUser(email){return email.split("@")[0]}
 
@@ -32,7 +33,7 @@ export default function Navigation(){
             </div>
 
             { loggedIn ? 
-                <div className="profile">
+                <div className="nav-profile">
                     <span className="userImg" onClick={handleUserMenu}>{userImg}</span>
                     {user ? <h4>Hi, {mailToUser(user)}!</h4> : null}
 
@@ -40,7 +41,7 @@ export default function Navigation(){
                         <div className="user-menu">
                             <ul>
                                 <li><Link to='/profile'>Profile</Link></li>
-                                <li><Link to='/' onClick={() => dispath(logout())}>Logout</Link></li>
+                                <li><Link to='/' onClick={handleLogout}>Logout</Link></li>
                             </ul>
                         </div>
                     : null }
